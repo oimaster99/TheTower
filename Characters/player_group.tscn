@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqhmap6exjvvk"]
+
+[ext_resource type="Script" path="res://Characters/player_group.gd" id="1_0cggf"]
+[ext_resource type="PackedScene" uid="uid://doxitryvw7fny" path="res://Characters/ally.tscn" id="2_w36bs"]
+
+[node name="player_group" type="Node2D"]
+script = ExtResource("1_0cggf")
+
+[node name="Ally" parent="." instance=ExtResource("2_w36bs")]
+
+[node name="Ally2" parent="." instance=ExtResource("2_w36bs")]
+
+[node name="Ally3" parent="." instance=ExtResource("2_w36bs")]
+
+[node name="Ally4" parent="." instance=ExtResource("2_w36bs")]

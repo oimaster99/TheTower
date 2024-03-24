@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqcucfhqwe2d8"]
+
+[ext_resource type="PackedScene" uid="uid://bqhmap6exjvvk" path="res://Characters/player_group.tscn" id="1_7rq8w"]
+[ext_resource type="PackedScene" uid="uid://b0a6lbbusi8dr" path="res://Characters/enemy_group.tscn" id="2_ivqs6"]
+
+[node name="Battle" type="Node2D"]
+
+[node name="player_group" parent="." instance=ExtResource("1_7rq8w")]
+position = Vector2(192, 96)
+
+[node name="EnemyGroup" parent="." instance=ExtResource("2_ivqs6")]
+position = Vector2(920, 88)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ChoiceMenu" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 696.0
+offset_top = 448.0
+offset_right = 800.0
+offset_bottom = 504.0
+
+[node name="Attack" type="Button" parent="CanvasLayer/ChoiceMenu"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Special" type="Button" parent="CanvasLayer/ChoiceMenu"]
+layout_mode = 2
+text = "Special"
+
+[node name="Defend" type="Button" parent="CanvasLayer/ChoiceMenu"]
+layout_mode = 2
+text = "Defend"
+
+[node name="Item" type="Button" parent="CanvasLayer/ChoiceMenu"]
+layout_mode = 2
+text = "Item"
+
+[node name="Run" type="Button" parent="CanvasLayer/ChoiceMenu"]
+layout_mode = 2
+text = "Run"
+
+[connection signal="next_player" from="EnemyGroup" to="player_group" method="_on_enemy_group_next_player"]
+[connection signal="pressed" from="CanvasLayer/ChoiceMenu/Attack" to="EnemyGroup" method="_on_attack_pressed"]

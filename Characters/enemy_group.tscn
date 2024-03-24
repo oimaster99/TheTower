@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0a6lbbusi8dr"]
+
+[ext_resource type="Script" path="res://Characters/EnemyGroup.gd" id="1_ryt3c"]
+[ext_resource type="PackedScene" uid="uid://cohk3kfvslgfu" path="res://Characters/enemy.tscn" id="2_wku45"]
+
+[node name="EnemyGroup" type="Node2D"]
+script = ExtResource("1_ryt3c")
+
+[node name="Enemy" parent="." instance=ExtResource("2_wku45")]
+ATTACK = 5.0
+DEFENSE = 3.0
+SPEED = 5.0
+
+[node name="Enemy2" parent="." instance=ExtResource("2_wku45")]
+position = Vector2(0, -1.52588e-05)
+ATTACK = 5.0
+DEFENSE = 3.0
+SPEED = 5.0
+
+[node name="Enemy3" parent="." instance=ExtResource("2_wku45")]
+position = Vector2(0, -3.05176e-05)
+ATTACK = 5.0
+DEFENSE = 3.0
+SPEED = 5.0
+
+[node name="Enemy4" parent="." instance=ExtResource("2_wku45")]
+position = Vector2(-3.05176e-05, -7.62939e-06)
+ATTACK = 5.0
+DEFENSE = 3.0
+SPEED = 5.0

@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://doxitryvw7fny"]
+
+[ext_resource type="Texture2D" uid="uid://cc1kvu6kkga1o" path="res://Graphics/party_placeholder.png" id="1_6erve"]
+[ext_resource type="Script" path="res://Characters/ally.gd" id="1_21lkh"]
+[ext_resource type="Texture2D" uid="uid://fuuxuvffbljr" path="res://Graphics/pointer.png" id="2_grghh"]
+
+[sub_resource type="Animation" id="Animation_knxd0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4lypb"]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(30, 30, 30, 1), Color(30, 30, 30, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cdw15"]
+_data = {
+"RESET": SubResource("Animation_knxd0"),
+"hurt": SubResource("Animation_4lypb")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enqlf"]
+size = Vector2(112, 112)
+
+[node name="Ally" type="CharacterBody2D"]
+scale = Vector2(0.755, 0.755)
+script = ExtResource("1_21lkh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6erve")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -43.705
+offset_top = -68.0
+offset_right = 46.295
+offset_bottom = -41.0
+value = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cdw15")
+}
+
+[node name="Focus" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-64, 0)
+texture = ExtResource("2_grghh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_enqlf")
